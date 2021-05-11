@@ -9,14 +9,14 @@ La aplicación está estructurada para separar la lógica de negocio de la inter
 ## Probar la aplicación en local
 
 ### Establecer variables de configuración
-Dentro de la carpeta config, haz una copia de config_sample.json y ponle como nombre dev_config.json. Dentro de este archivo coloca las marcadas.
+Dentro de la carpeta config, haz una copia de **config_sample.json** y renombrala como **nombre dev_config.json**. Dentro de este archivo coloca las variables marcadas.
 
 ### Configurar Mapas
-Para configurar android reemplaza "YOUR KEY HERE" con tu API Key de google maps en el archivo AndroidManifest.xml.
+Para configurar android reemplaza tu API Key de google maps en el archivo AndroidManifest.xml.
 
 <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR KEY HERE"/>
 
-Para configurar iOS reemplaza "YOUR KEY HERE" con tu API Key de google maps en el archivo AppDelegate.swift .
+Para configurar iOS reemplaza tu API Key de google maps en el archivo AppDelegate.swift .
 
 GMSServices.provideAPIKey("YOUR KEY HERE")
 
