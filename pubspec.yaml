@@ -30,9 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.3
   equatable: ^2.0.0
-  mockito: ^5.0.7
-  build_runner: ^2.0.2
   google_maps_flutter: ^2.0.3
+  flutter_bloc: ^7.0.0
 
 dev_dependencies:
   flutter_test:

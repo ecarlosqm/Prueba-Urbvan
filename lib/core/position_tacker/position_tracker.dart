@@ -29,7 +29,7 @@ class PositionTraker {
       if (response.success) {
         if (_iHaveFailed) {
           _iHaveFailed = false;
-          _initIntervals();
+          starTracking();
         }
         return _streamController.add(response.value!);
       } else {
@@ -45,12 +45,11 @@ class PositionTraker {
   }
 
   Stream<Position> positions() {
-    _fireRequest(1);
-    _initIntervals();
     return _streamController.stream;
   }
 
-  void _initIntervals() {
+  void starTracking() {
+    _fireRequest(1);
     _timer?.cancel();
     _timer = Timer.periodic(_intervals, (timer) => _fireRequest(1));
   }
