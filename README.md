@@ -2,7 +2,7 @@
 
 ## Estructura del proyecto
 
-En la carpeta ***core*** encontramos la lógica de negocio. En su interior vemos separado las clases que pertenecen al dominio de las clases de implementación de servicios en ***domain*** e ***infrastructure*** respectivamente. En la carpeta ***ui***, encontramos todo lo relacionado a la interfaz gráfica.
+En la carpeta ***core*** encontramos la lógica de negocio. En su interior vemos separado las clases que pertenecen al dominio, de las clases de implementación de servicios, en ***domain*** e ***infrastructure*** respectivamente. En la carpeta ***ui***, encontramos todo lo relacionado a la interfaz gráfica.
 
 La aplicación está estructurada para separar la lógica de negocio de la interfaz de usuario e implementación de servicios.
 
