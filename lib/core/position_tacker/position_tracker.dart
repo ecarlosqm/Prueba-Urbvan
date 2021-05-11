@@ -19,7 +19,7 @@ class PositionTraker {
     _retriesOnFail = retriesOnFail;
   }
 
-  void _fireRequest(Timer timer, int attempt) async {
+  void _fireRequest( int attempt) async {
     if (attempt > _retriesOnFail) {
       _cancelIntervals();
       return _streamController.addError("No fue posible obtener la ubicación");
@@ -35,23 +35,24 @@ class PositionTraker {
       } else {
         _iHaveFailed = true;
         _cancelIntervals();
-        _fireRequest(timer, ++attempt);
+        _fireRequest( ++attempt);
       }
     } catch (e) {
       _iHaveFailed = true;
       _cancelIntervals();
-      _fireRequest(timer, ++attempt);
+      _fireRequest( ++attempt);
     }
   }
 
   Stream<Position> positions() {
+    _fireRequest(1);
     _initIntervals();
     return _streamController.stream;
   }
 
   void _initIntervals() {
     _timer?.cancel();
-    _timer = Timer.periodic(_intervals, (timer) => _fireRequest(timer, 1));
+    _timer = Timer.periodic(_intervals, (timer) => _fireRequest(1));
   }
 
   void _cancelIntervals() {
