@@ -56,7 +56,7 @@ class _PositionTackerPageState extends State<PositionTackerPage> {
       this.error = true;
     });
     showConfirmationDialog(
-        context, "Ocurrio un error", "Quieres volver a intentar", _retry);
+        context, "Ocurrió un error", "¿Quieres volver a intentar?", _retry);
   }
 
   void _retry() {
