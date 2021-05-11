@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:urbvan/config/config.dart';
 import 'package:urbvan/core/position_tacker/infraestructure/iss_position_provider.dart';
 import 'package:urbvan/core/position_tacker/position_tracker.dart';
-import 'package:urbvan/core/route_generator/infraestructure/google_directions_provider.dart';
+import 'package:urbvan/core/route_generator/infraestructure/google_path_provider.dart';
 import 'package:urbvan/core/route_generator/route_generator.dart';
 import 'package:urbvan/ui/pages/position_track_page.dart';
 import 'package:urbvan/ui/pages/route_generator_page.dart';

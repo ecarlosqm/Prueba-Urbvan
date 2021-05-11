@@ -7,20 +7,16 @@ typedef T RouteMapper<T>(RouteNode node);
 typedef Future<void> ForEachCallback(RouteNode node);
 
 class RouteNode {
-  RouteNodeDescription routeNodeDescription;
-  RouteNode? next;
+  final RouteNodeDescription routeNodeDescription;
+  final RouteNode? next;
 
   RouteNode({
     required this.routeNodeDescription,
     this.next,
   });
 
-  void changeSelectedPath(Path path) {
-    routeNodeDescription = routeNodeDescription.changeSelected(path);
-  }
-
-  void changePaths(List<Path> paths) {
-    routeNodeDescription = routeNodeDescription.changePaths(paths);
+  RouteNode changeSelectedPath(Path path) {
+    return RouteNode(routeNodeDescription: routeNodeDescription.changeSelected(path), next: this.next);
   }
 
   Position get position => routeNodeDescription.position;

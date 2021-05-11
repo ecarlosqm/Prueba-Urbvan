@@ -58,7 +58,7 @@ class RouteGenerator {
   }
 
   Future<Route> addPosition(Route route, Position position) async {
-    if (route.last == null) {
+    if (route.lastNode == null) {
       return Route(
         RouteNode(
           routeNodeDescription: RouteNodeDescription(
@@ -71,12 +71,12 @@ class RouteGenerator {
       );
     } else {
       final pathResponse = await _pathGenerator.getPaths(
-        from: route.last!.position,
+        from: route.lastNode!.position,
         to: position,
       );
       return Route(
         RouteNode(
-          next: route.last,
+          next: route.lastNode,
           routeNodeDescription: RouteNodeDescription(
             position: position,
             selectedPath: pathResponse.value!.first,

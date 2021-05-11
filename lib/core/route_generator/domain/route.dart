@@ -1,3 +1,4 @@
+import 'package:urbvan/core/route_generator/domain/path.dart';
 import 'package:urbvan/core/route_generator/domain/route_node.dart';
 
 class Route {
@@ -5,7 +6,7 @@ class Route {
 
   Route([this._node]);
 
-  RouteNode? get last => _node;
+  RouteNode? get lastNode => _node;
   bool get isEmty => _node == null;
   bool get isNotEmty => _node != null;
 
@@ -15,5 +16,9 @@ class Route {
 
   void clear() {
     _node = null;
+  }
+
+  void changeSelectedPath(Path path) {
+    _node = _node?.changeSelectedPath(path);
   }
 }

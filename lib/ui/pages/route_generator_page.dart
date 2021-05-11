@@ -27,7 +27,7 @@ class _RouteGeneratorPageState extends State<RouteGeneratorPage> {
   routeGenerator.Route route = routeGenerator.Route();
 
   Set<Marker> get markers {
-    final markers = route.last
+    final markers = route.lastNode
         ?.map(
           (routeNode) => Marker(
               markerId: MarkerId(
@@ -40,7 +40,7 @@ class _RouteGeneratorPageState extends State<RouteGeneratorPage> {
   }
 
   Set<Polyline> get polilines {
-    final polyline = route.last?.map(
+    final polyline = route.lastNode?.map(
       (routePoint) {
         final polyline = Polyline(
           polylineId: PolylineId(
@@ -72,7 +72,7 @@ class _RouteGeneratorPageState extends State<RouteGeneratorPage> {
       setState(() {
         this.route = route;
       });
-      await animateBounds(route.last?.getBoundsForGoogleMaps);
+      await animateBounds(route.lastNode?.getBoundsForGoogleMaps);
       setState(() {
         loading = false;
       });
@@ -103,20 +103,20 @@ class _RouteGeneratorPageState extends State<RouteGeneratorPage> {
     setState(() => null);
   }
 
-  List<FloatingOptionWidget> getRouteAternativesOptions() {
-    final alternatives = route.last?.paths;
+  List<FloatingOptionWidget> getAternativeRoutesWidgets() {
+    final alternatives = route.lastNode?.paths;
     return alternatives
             ?.map(
               (path) => FloatingOptionWidget(
                 value: path,
-                selected: route.last?.selectedPath == path,
+                selected: route.lastNode?.selectedPath == path,
                 title: "Alternativa de ${path.distance}",
                 onSelect: (value) async {
-                  route.last?.changeSelectedPath(
+                  route.changeSelectedPath(
                     path,
                   );
                   setState(() => null);
-                  await animateBounds(route.last?.getBoundsForGoogleMaps);
+                  await animateBounds(route.lastNode?.getBoundsForGoogleMaps);
                 },
               ),
             )
@@ -128,12 +128,12 @@ class _RouteGeneratorPageState extends State<RouteGeneratorPage> {
   Widget build(BuildContext context) {
     return FloatingOptions(
       title: "Rutas alternativas",
-      show: route.last?.hasAlternatives ?? false,
+      show: route.lastNode?.hasAlternatives ?? false,
       buttonHeight: 50,
       maxHeight: MediaQuery.of(context).size.height * .3,
       maxWidth: MediaQuery.of(context).size.width * .8,
-      options: route.last?.hasAlternatives ?? false
-          ? getRouteAternativesOptions()
+      options: route.lastNode?.hasAlternatives ?? false
+          ? getAternativeRoutesWidgets()
           : [],
       child: Stack(
         children: [

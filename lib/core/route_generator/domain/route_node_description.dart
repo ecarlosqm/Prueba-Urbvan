@@ -19,10 +19,6 @@ class RouteNodeDescription extends Equatable {
     return paths[index];
   }
 
-  RouteNodeDescription changePaths(List<Path> paths) {
-    return _copyWith(paths: paths);
-  }
-
   RouteNodeDescription changeSelected(Path path) {
     return _copyWith(selectedPath: path);
   }
