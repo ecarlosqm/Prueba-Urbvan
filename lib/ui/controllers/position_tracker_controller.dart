@@ -42,7 +42,7 @@ class PositionTrackerController extends Cubit<PositionTrackerState> {
   }
 
   void _onPositionError(Object error) {
-    emit(state.errorState("Ocurrió un error"));
+    emit(state.errorState("No fue posible obtener la posición."));
   }
 
   void startTracking(){
@@ -55,6 +55,8 @@ class PositionTrackerController extends Cubit<PositionTrackerState> {
     _subscription = positionTraker
         .positions()
         .listen(_onNewPosition, onError: _onPositionError);
+      startTracking();
+    
   }
 
   void setGoogleMapsController(GoogleMapController controller) async {

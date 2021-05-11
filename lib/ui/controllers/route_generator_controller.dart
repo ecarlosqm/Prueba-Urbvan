@@ -122,7 +122,7 @@ class RouteGeneratorState {
       RouteGeneratorState(controller: controller, isLoading: false, route: route);
   RouteGeneratorState errorState(String error) => RouteGeneratorState(
         controller: controller,
-        isLoading: isLoading,
+        isLoading: false,
         route: route,
         errorMessage: error,
       );

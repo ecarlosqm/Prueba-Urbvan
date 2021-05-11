@@ -20,7 +20,7 @@ class _PositionTackerPageState extends State<PositionTackerPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<PositionTrackerController, PositionTrackerState>(
       listener: (context, state) {
-        if (state.hasError) showMessage(context, "error", state.errorMessage!);
+        if (state.hasError) showConfirmationDialog(context, "Error", "${state.errorMessage!} . ¿Quieres intentarlo de nuevo?", context.read<PositionTrackerController>().retry);
       },
       builder: (context, state) => Stack(
         alignment: Alignment.center,

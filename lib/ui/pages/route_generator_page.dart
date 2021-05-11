@@ -32,7 +32,7 @@ class RouteGeneratorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<RouteGeneratorController, RouteGeneratorState>(
       listener: (context, state) {
-        if (state.hasError) showMessage(context, "error", state.errorMessage!);
+        if (state.hasError) showMessage(context, "Error", state.errorMessage!);
       },
       builder: (context, state) => FloatingOptions(
         title: "Rutas alternativas",
