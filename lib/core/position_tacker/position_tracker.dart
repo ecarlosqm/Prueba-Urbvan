@@ -7,20 +7,20 @@ class PositionTraker {
   late StreamController<Position> _streamController;
   late Duration _intervals;
   late PositionProvider _positionPorvider;
-  late int _retriesOnFail;
+  late int _attempts;
   bool _iHaveFailed = false;
   Timer? _timer;
 
   PositionTraker(PositionProvider positionProvider, Duration intervals,
-      [int retriesOnFail = 1]) {
+      [int attempts = 4]) {
     _streamController = StreamController<Position>.broadcast();
     _positionPorvider = positionProvider;
     _intervals = intervals;
-    _retriesOnFail = retriesOnFail;
+    _attempts = attempts;
   }
 
   void _fireRequest( int attempt) async {
-    if (attempt > _retriesOnFail) {
+    if (attempt > _attempts) {
       _cancelIntervals();
       return _streamController.addError("No fue posible obtener la ubicación");
     }
